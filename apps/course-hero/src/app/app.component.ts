@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@course-management/api-interfaces';
+import { Course } from '@course-management/api-interfaces';
 
 @Component({
   selector: 'course-management-root',
@@ -8,6 +8,6 @@ import { Message } from '@course-management/api-interfaces';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
+  hello$ = this.http.get<Course[]>('/api/course');
   constructor(private http: HttpClient) {}
 }

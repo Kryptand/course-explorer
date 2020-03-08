@@ -21,7 +21,12 @@
               "apps/course-hero/src/favicon.ico",
               "apps/course-hero/src/assets"
             ],
-            "styles": ["apps/course-hero/src/styles.css"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "node_modules/devextreme/dist/css/dx.material.teal.light.css",
+              "node_modules/devextreme/dist/css/dx.common.css",
+              "apps/course-hero/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {

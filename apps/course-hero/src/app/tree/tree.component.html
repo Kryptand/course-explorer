@@ -1,0 +1,114 @@
+<as-split unit="percent" #split="asSplit">
+  <as-split-area size="30" #area1="asSplitArea">
+    <mat-drawer-container class="example-container">
+      <mat-drawer #drawer mode="side" opened>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title-group>
+              <mat-card-title>
+                Filter
+              </mat-card-title>
+              <mat-card-subtitle>
+                Subtitle
+              </mat-card-subtitle>
+            </mat-card-title-group>
+            <button
+              (click)="drawer.toggle()"
+              style="margin-left: auto;"
+              mat-icon-button
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-card-header>
+        </mat-card></mat-drawer
+      >
+      <mat-drawer-content>
+        <dx-tree-list
+          id="treelist"
+          [dataSource]="dataSource$ | async"
+          [showBorders]="true"
+          [remoteOperations]="{ filtering: true }"
+          [showRowLines]="true"
+          [columnHidingEnabled]="true"
+          keyExpr="id"
+          parentIdExpr="parentId"
+          hasItemsExpr="hasChildren"
+          (onContextMenuPreparing)="contextMenu($event)"
+          (onToolbarPreparing)="onToolbarPreparing($event)"
+          [rootValue]="null"
+        >
+          <dxo-search-panel [visible]="true"></dxo-search-panel>
+          <dxo-selection mode="multiple" [recursive]="false"> </dxo-selection>
+          <dxi-column dataField="title"></dxi-column>
+
+          <dxi-column dataField="courseType"></dxi-column>
+          <dxi-column type="buttons">
+            <dxi-button template="myCommand">
+              <div *dxTemplate="let data of 'myCommand'">
+                <button
+                  mat-icon-button
+                  [matMenuTriggerFor]="menu"
+                  aria-label="Example icon-button with a menu"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+              </div>
+            </dxi-button>
+          </dxi-column>
+          <dxi-column
+            dataField="createdDate"
+            dataType="date"
+            [width]="150"
+          ></dxi-column>
+          <dxi-column
+            dataField="modifiedDate"
+            dataType="date"
+            [width]="150"
+          ></dxi-column>
+          <div *dxTemplate="let data of 'totalGroupCount'">
+            <div class="informer">
+              <button
+                (click)="drawer.toggle()"
+                mat-icon-button
+                aria-label="Example icon-button with a menu"
+              >
+                <mat-icon>filter_list</mat-icon>
+              </button>
+            </div>
+          </div>
+        </dx-tree-list>
+      </mat-drawer-content>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Gliederungsebe hinzufügen</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Unterveranstaltung hinzufügen</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Kopieren</span>
+        </button>
+      </mat-menu>
+      <mat-menu #filterMenu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Gliederungsebe hinzufügen</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Unterveranstaltung hinzufügen</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Kopieren</span>
+        </button>
+      </mat-menu>
+    </mat-drawer-container>
+  </as-split-area>
+  <as-split-area size="70" #area2="asSplitArea">
+    lorem ipsum
+  </as-split-area>
+</as-split>

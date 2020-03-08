@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { withCache } from './orm.config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { CourseModule } from './course/course.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService]
+  imports: [TypeOrmModule.forRoot(withCache), CourseModule],
+  controllers: [],
+  providers: []
 })
 export class AppModule {}
