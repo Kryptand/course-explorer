@@ -58,7 +58,7 @@
     "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.0",
-    "typeorm": "0.2.19",
+    "typeorm": "0.2.25",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
